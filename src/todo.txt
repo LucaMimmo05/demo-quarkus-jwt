@@ -1,0 +1,4 @@
+1. Aggiungere 3 campi all'utente nome, cognome, indirizzo
+2. Registrare un admin sul sito, permettere solo agli admin di registrare utenti
+3. Permettere agli admin di modificare i dati di tutti gli utenti
+4. Permettere anche agli utenti di modificare i propri campi

@@ -5,13 +5,14 @@ import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Parameters;
 import it.itsincom.webdevd.persistence.model.ApplicationUser;
 import jakarta.enterprise.context.ApplicationScoped;
+import org.mindrot.jbcrypt.BCrypt;
 
 @ApplicationScoped
 public class UserRepository implements PanacheRepositoryBase<ApplicationUser, Long> {
     public ApplicationUser authenticate(String username, String password) {
         ApplicationUser applicationUser = findByUsername(username);
         if (applicationUser != null) {
-            boolean matches = BcryptUtil.matches(password, applicationUser.getPassword());
+            boolean matches = BCrypt.checkpw(password, applicationUser.getPassword());
             if (matches) {
                 return applicationUser;
             } else {
